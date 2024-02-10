@@ -26,5 +26,27 @@ fn update_commit_push(){
         exit(1);
     }
     
-    let push_command
+    // remote repo
+    let push_command = Command::new("git")
+        .arg("push")
+        .arg("origin")
+        .arg("master")
+        .output()
+        .expect("failed to execute the git push command")
+
+    if !push_command.status.success(){
+        eprintln!("Error: Failed to push the files changes to remote!")
+        exit(1);
+    }
+
+    println!("Success in adding, committing and pushing all the changes")
+}
+
+fn name_generator() -> String{
+    let mut generator = Generator::default();
+    generatpr.next().unwrap()
+}
+
+fn main(){
+    update_commit_push();
 }
